@@ -303,6 +303,12 @@ document.addEventListener('keydown', e => {
   if (e.code === 'ArrowLeft') mark(false);
 });
 
+// Protection de la page
+const currentUser = localStorage.getItem('currentUser');
+if (!currentUser) {
+    window.location.href = 'login.html';
+}
+
 buildThemes();
 load();
 </script>

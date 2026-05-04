@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Portfolio — Votre Nom</title>
+  <link rel="stylesheet" href="stylep.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+</head>
+<body>
+
+  <!-- LOADER -->
+  <div id="loader">
+    <div id="loader-init"> Sirine BAHIJ</div>
+    <p id="loader-sub">Portfolio</p>
+    <div id="loader-line"></div>
+  </div>
+
+  <!-- HEADER -->
+  <header id="header">
+    <div class="logo">
+      Sirine BAHIJ
+      <span> Mon Portfolio</span>
+    </div>
+    <nav>
+      <a href="#a-propos">À propos</a>
+      <a href="#projets">Projets</a>
+      <a href="#experience">Expérience</a>
+      <a href="#formation">Formation</a>
+      <a href="#contact">Contact</a>
+    </nav>
+  </header>
+
+  <!-- MENU MOBILE -->
+  <button id="hamburger" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+  <div id="menu">
+    <a href="#a-propos" onclick="closeMenu()">À propos</a>
+    <a href="#projets" onclick="closeMenu()">Projets</a>
+    <a href="#experience" onclick="closeMenu()">Expérience</a>
+    <a href="#formation" onclick="closeMenu()">Formation</a>
+    <a href="#contact" onclick="closeMenu()">Contact</a>
+  </div>
+
+  <!-- HERO -->
+  <section id="accueil">
+    <div class="hero-bg">
+      <div class="hero-circle"></div>
+      <div class="hero-circle"></div>
+    </div>
+    <p class="hero-tagline">Bienvenue sur ma page ! </p>
+    <h2> Sirine BAHIJ </h2>
+    <p class="hero-sub">
+     Entre les algorithmes et l'anatomie, je code un avenir où la santé devient humainement intelligente.
+    </p>
+    <div class="hero-btns">
+      <a href="#projets" class="btn-primary">Voir mes projets</a>
+      <a href="#contact" class="btn-outline">Me contacter</a>
+    </div>
+    <div class="scroll-hint">
+      <span>Défiler</span>
+      <div class="scroll-dot"></div>
+    </div>
+  </section>
+
+  <!-- À PROPOS -->
+  <section id="a-propos">
+    <p class="section-label reveal">Qui suis-je ?</p>
+    <h2 class="reveal">À propos</h2>
+    <div class="section-line reveal"></div>
+    <div class="apropos-grid">
+      <div class="card card-accent reveal">
+        <h3>Mon parcours</h3>
+        <p>
+          Je suis Sirine, étudiante en Master Informatique Biomédicale, quelque part entre les algorithmes et l'anatomie. Curieuse de nature, je me suis toujours demandé comment les choses fonctionnent  le corps humain, les systèmes d'information, les données qui se cachent derrière chaque décision médicale. Data scientiste en devenir, je cherche constamment à comprendre, créer et innover. Aujourd'hui je construis des ponts entre la technologie et la santé, convaincue que le numérique peut changer des vies. Mon objectif ? Faire de la santé numérique quelque chose d'humain.
+        </p>
+        <p class="texte-gris">
+          Basée à Paris, je peux collaborer avec des équipes créatives pour donner
+          vie à des projets ambitieux et innovants.
+        </p>
+      </div>
+      <div class="card card-filled reveal">
+        <h3>Compétences</h3>
+        <p>Technologies et outils que je maîtrise :</p>
+        <div class="skill-tags">
+          <span class="tag">HTML / CSS</span>
+          <span class="tag">JavaScript</span>
+          <span class="tag">Rstudio</span>
+          <span class="tag">R</span>
+          <span class="tag">Python</span>
+		  <span class="tag">Linux</span>
+		  <span class="tag">Pack office</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROJETS -->
+  <section id="projets">
+    <p class="section-label reveal">Ce que j'ai réalisé</p>
+    <h2 class="reveal">Projets</h2>
+    <div class="section-line reveal"></div>
+    <div class="projets-grid">
+
+      <div class="projet-card reveal">
+  <div class="projet-banner pb-1"></div>
+  <div class="projet-body">
+  <div class="projet-banner pb-1" style="background-image: url('image1.PNG'); background-size: cover; background-position: center; height: 200px;"></div>
+    <h3>Le renoncement aux soins à L'Île-Saint-Denis</h3>
+    <p>
+      Enquête de terrain auprès de 100 habitants pour analyser les inégalités 
+      sociales, territoriales et symboliques d'accès aux soins dans un territoire 
+      urbain relégué. Méthodologie mixte : questionnaire, cartographie SIG et 
+      observation directe.
+    </p>
+    <div class="skill-tags" style="margin: 10px 0;">
+      <span class="tag">Santé publique</span>
+      <span class="tag">Géographie sociale</span>
+      <span class="tag">Enquête terrain</span>
+      <span class="tag">Cartographie</span>
+    </div>
+    <a href="dossier_projet_territoriale.pdf" class="projet-link" target="_blank">Voir le projet →</a>
+  </div>
+</div>
+
+      <div class="projet-card reveal">
+  <div class="projet-banner pb-2"></div>
+  <div class="projet-body">
+  <div class="projet-banner pb-1" style="background-image: url('image2.PNG'); background-size: cover; background-position: center; height: 200px;"></div>
+    <h3>Analyse exploratoire — Imputation des valeurs manquantes</h3>
+    <p>
+      Comparaison de méthodes d'imputation (moyenne, KNN, régression linéaire) 
+      sur un dataset médical de 101 766 patients diabétiques. Évaluation des 
+      performances via MAE et RMSE pour identifier la méthode la plus fiable 
+      selon le type de données manquantes.
+    </p>
+    <div class="skill-tags" style="margin: 10px 0;">
+      <span class="tag">Python</span>
+      <span class="tag">Pandas</span>
+      <span class="tag">Scikit-learn</span>
+      <span class="tag">Seaborn</span>
+      <span class="tag">Data Science</span>
+    </div>
+    <a href="analyse_exploratoire_vm_(1).ipynb" class="projet-link" target="_blank">Voir le projet →</a>
+  </div>
+  
+  <div class="projet-card reveal">
+    <div class="projet-banner pb-4"></div>
+    <div class="projet-body">
+	<div class="projet-banner pb-1" style="background-image: url('image3.PNG'); background-size: cover; background-position: center; height: 200px;"></div>
+        <h3>Recommandations de santé</h3>
+        <p>
+            Application web de recommandations nutritionnelles et d'activité physique 
+            basée sur les recommandations officielles du PNNS. Filtrage dynamique 
+            par catégorie, sous-catégorie et public cible via une API REST.
+        </p>
+        <div class="skill-tags" style="margin: 10px 0;">
+            <span class="tag">Node.js</span>
+            <span class="tag">API REST</span>
+            <span class="tag">JSON</span>
+            <span class="tag">JavaScript</span>
+            <span class="tag">Santé publique</span>
+        </div>
+        <a href="recommandation.html" class="projet-link">Voir le projet →</a>
+    </div>
+</div>
+</div>
+
+<div class="projet-card reveal">
+  <div class="projet-banner pb-3"></div>
+  <div class="projet-body">
+  <div class="projet-banner pb-1" style="background-image: url('image4.PNG'); background-size: cover; background-position: center; height: 200px;"></div>
+    <h3>MedFlash — Flashcards Médicales</h3>
+    <p>
+      Application web de révision par flashcards interactives sur 4 thèmes 
+      médicaux : Anatomie, Pharmacologie, Pathologies et Épidémiologie. 
+      Système de score, raccourcis clavier et session personnalisable.
+    </p>
+    <div class="skill-tags" style="margin: 10px 0;">
+      <span class="tag">HTML / CSS</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Santé numérique</span>
+      <span class="tag">UX Design</span>
+    </div>
+    <a href="flashcard.html" class="projet-link" target="_blank">Voir le projet →</a>
+  </div>
+</div>
+
+    </div>
+  </section>
+
+  <!-- EXPÉRIENCE -->
+  <section id="experience">
+    <p class="section-label reveal">Mon parcours professionnel</p>
+    <h2 class="reveal">Expériences </h2>
+    <div class="section-line reveal"></div>
+    <div class="timeline">
+
+      <div class="tl-item reveal">
+        <div class="tl-dot">▸</div>
+        <div class="tl-content">
+          <p class="tl-date">2023 – Présent</p>
+          <h3> Chargé d'enseignement : Responsable filière ST2S </h3>
+          <p class="company"> Sigma F </p>
+          <p> conception et élaboration de contenus pdagogiques adaptés aux besoins des élèves de terminale</p> 
+		  <p> Gestion d'une équipe d'intervenant </p>
+		  <p> Dispense de cours dans différentes matières </p> 
+		  <p> Préparation des élèves au grand oral du baccalauréat à travers des mises en situation relles </p> 
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot">▸</div>
+        <div class="tl-content">
+          <p class="tl-date">2022 – 2023</p>
+          <h3>Menbre active d'une association caritative</h3>
+          <p class="company"> Association ACF </p>
+          <p> Préparation, distribution et organisation des colis alimentaires</p>
+		  <p> Collectes alimentaires en magasin et auprès de partenaires </p> 
+		  <p> Participation aux réunions </p> 
+		  <p> Collecte de fonds et sensibilisation du public </p>
+        </div>
+      </div>
+
+      <div class="tl-item reveal">
+        <div class="tl-dot">▸</div>
+        <div class="tl-content">
+          <p class="tl-date">2020 – 2021</p>
+          <h3>Stage : Préparactrice en pharmacie </h3> 
+          <p> Préparation des ordonnances sous la supervision du pharmacien</p>
+		  <p> Gestion des stocks : réceptions, rangement et controle des médicaments pharmaceutiques</p> 
+		  <p> Mise en rayon et étiquetage des produits pharmaceutiques </p> 
+		  <p> Participation aux inventaires pour assurer le suivi des stocks </p> 
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- FORMATION -->
+  <section id="formation">
+    <p class="section-label reveal">Éducation</p>
+    <h2 class="reveal">Formation</h2>
+    <div class="section-line reveal"></div>
+    <div class="formation-grid">
+
+      <div class="form-card reveal">
+        <p class="year">2025- PRESENT</p>
+        <h3> MasterInformatique biomédicale </h3>
+        <p class="etablissement"> Sorbonne Paris Nord</p>
+      </div>
+
+      <div class="form-card reveal">
+        <p class="year">2022-2024</p>
+        <h3>Licence santé & socité </h3>
+        <p class="etablissement"> Nanterre Université</p>
+      </div>
+	  
+	  <div class="form-card reveal">
+        <p class="year">2022-2024</p>
+        <h3> LAS - Medicine </h3>
+        <p class="etablissement"> Paris Saclay</p>
+      </div>
+
+      <div class="form-card reveal">
+        <p class="year">2025</p>
+        <h3>Certification : Introudction à la statistique avc R  </h3>
+        <p class="etablissement">Coursera</p>
+      </div>
+
+      <div class="form-card reveal">
+        <p class="year">2025</p>
+        <h3>Certification : Concept et méthodes en épidémiologie</h3>
+        <p class="etablissement"> Coursera</p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact">
+    <p class="section-label reveal">Travaillons ensemble</p>
+    <h2 class="reveal">Contact</h2>
+    <div class="section-line reveal"></div>
+    <div class="contact-wrap">
+      <p class="contact-intro reveal">
+        Vous avez un projet en tête ? Je serais ravie d'en discuter avec vous.
+      </p>
+     <form id="contact-form">
+    <div class="form-group reveal">
+        <label for="nom">Votre nom</label>
+        <input type="text" id="nom" name="from_name" placeholder="Marie Dupont" required />
+    </div>
+    <div class="form-group reveal">
+        <label for="email">Adresse email</label>
+        <input type="email" id="email" name="from_email" placeholder="marie@exemple.fr" required />
+    </div>
+    <div class="form-group reveal">
+        <label for="message">Message</label>
+        <textarea id="message" name="message" placeholder="Décrivez votre projet ou votre demande..." required></textarea>
+    </div>
+    <button type="submit" class="submit-btn reveal">Envoyer le message</button>
+</form>
+   
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <p>Conçu avec soin par <strong> BAHIJ Sirine</strong> · 2025</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

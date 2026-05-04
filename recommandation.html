@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>Recommandations de santé</title>
+    <link rel="stylesheet" href="stylep.css">
+    <style>
+		.filtres .btn-recherche {
+			display: block !important;
+			opacity: 1 !important;
+			visibility: visible !important;
+			position: relative !important;
+			padding: 12px 30px !important;
+			background-color: #6B6DAE !important;
+			color: white !important;
+			border: none !important;
+			border-radius: 25px !important;
+			font-size: 15px !important;
+			cursor: pointer !important;
+			margin-top: 0 !important;
+			transform: none !important;
+}
+        .reco-section { padding: 80px 50px; text-align: center; }
+        .filtres { display: flex; gap: 20px; justify-content: center; flex-wrap: wrap; margin: 40px 0; }
+        .filtres select {
+            padding: 12px 20px;
+            border: 2px solid var(--var-rose);
+            border-radius: 25px;
+            font-family: 'Playfair Display', serif;
+            font-size: 15px;
+            color: var(--var-sage);
+            background: white;
+            cursor: pointer;
+            outline: none;
+        }
+        .btn-recherche {
+            padding: 12px 30px;
+            background: var(--var-rouille);
+            color: white;
+            border: none;
+            border-radius: 25px;
+            font-size: 15px;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .btn-recherche:hover { background: var(--var-rose); }
+        .resultats { max-width: 800px; margin: 0 auto; }
+        .reco-card {
+            background: white;
+            border: 2px solid transparent;
+            border-radius: 15px;
+            padding: 25px 30px;
+            margin: 15px auto;
+            text-align: left;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.08);
+            transition: transform 0.3s, border-color 0.3s;
+            position: relative;
+            overflow: hidden;
+        }
+        .reco-card::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 3px;
+            background: var(--var-rose);
+        }
+        .reco-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--var-rose);
+        }
+        .reco-card h3 { color: var(--var-rouille); margin-bottom: 10px; }
+        .reco-card p { color: #555; font-size: 15px; margin: 5px 0; }
+        .reco-tags { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 12px; }
+        .reco-tag {
+            background: var(--var-beige);
+            color: var(--var-sage);
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 12px;
+        }
+        .source { color: var(--var-rose); font-size: 13px; margin-top: 10px; }
+        .aucun-resultat { color: var(--var-sage); font-size: 18px; margin: 40px 0; }
+    </style>
+</head>
+<body>
+
+<header id="header">
+    <div class="logo">
+        Sirine BAHIJ
+        <span>Mon Portfolio</span>
+    </div>
+    <button id="hamburger">
+        <span></span><span></span><span></span>
+    </button>
+    <nav id="menu">
+        <a href="portfolio.html">Accueil</a>
+        <a href="portfolio.html#a-propos">À propos</a>
+        <a href="portfolio.html#projets">Projets</a>
+        <a href="portfolio.html#contact">Contact</a>
+    </nav>
+</header>
+
+<div class="reco-section">
+    <p class="section-label">Santé publique</p>
+    <h2>Recommandations de santé</h2>
+    <div class="section-line"></div>
+
+    <div class="filtres">
+        <select id="categorie">
+            <option value="">Toutes les catégories</option>
+            <option value="Alimentation">Alimentation</option>
+            <option value="Activite physique">Activité physique</option>
+        </select>
+
+        <select id="sousCategorie">
+            <option value="">Toutes les sous-catégories</option>
+            <option value="Fruits et legumes">Fruits et légumes</option>
+            <option value="Feculents">Féculents</option>
+            <option value="Produits laitiers">Produits laitiers</option>
+            <option value="Viande et poisson">Viande et poisson</option>
+            <option value="Sucre et sel">Sucre et sel</option>
+            <option value="Hydratation">Hydratation</option>
+            <option value="Endurance">Endurance</option>
+            <option value="Renforcement musculaire">Renforcement musculaire</option>
+            <option value="Sedentarite">Sédentarité</option>
+            <option value="Equilibre et souplesse">Équilibre et souplesse</option>
+        </select>
+
+        <select id="public">
+            <option value="">Tous les publics</option>
+            <option value="Adultes">Adultes</option>
+            <option value="Enfants">Enfants</option>
+            <option value="Personnes agees">Personnes âgées</option>
+        </select>
+
+        <button class="btn-recherche" onclick="rechercher()">Rechercher</button>
+    </div>
+
+    <div class="resultats" id="resultats">
+        <p class="aucun-resultat">Lance une recherche pour afficher les recommandations.</p>
+    </div>
+</div>
+
+<footer>
+    <p>Conçu avec soin par <strong>BAHIJ Sirine</strong> · 2025</p>
+</footer>
+
+<script>
+async function rechercher() {
+    const categorie = document.getElementById('categorie').value;
+    const sousCategorie = document.getElementById('sousCategorie').value;
+    const pub = document.getElementById('public').value;
+
+    let url = 'https://api-sante-2.onrender.com/api/recommandations?';
+    if (categorie) url += `categorie=${categorie}&`;
+    if (sousCategorie) url += `sousCategorie=${sousCategorie}&`;
+    if (pub) url += `public=${pub}`;
+
+    const response = await fetch(url);
+    const data = await response.json();
+
+    const container = document.getElementById('resultats');
+
+    if (data.length === 0) {
+        container.innerHTML = '<p class="aucun-resultat">Aucune recommandation trouvée.</p>';
+        return;
+    }
+
+    container.innerHTML = data.map(r => `
+        <div class="reco-card">
+            <h3>${r.titre}</h3>
+            <p>${r.recommandation}</p>
+            <div class="reco-tags">
+                <span class="reco-tag">${r.categorie}</span>
+                <span class="reco-tag">${r.sousCategorie}</span>
+                <span class="reco-tag">${r.public}</span>
+            </div>
+            <p class="source">Source : ${r.source}</p>
+        </div>
+    `).join('');
+}
+</script>
+
+</body>
+</html>
